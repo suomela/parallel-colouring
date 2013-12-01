@@ -1,0 +1,4 @@
+Import('env')
+common = ['main.cc', 'tester.cc', 'reduce.cc']
+env.Program('colour-naive', ['colour-naive.cc'] + common)
+env.Program('colour-cv', ['colour-cv.cc'] + common)
