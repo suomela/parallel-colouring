@@ -13,15 +13,33 @@ if system == 'Darwin':
     linkflags = '-stdlib=libc++'
 
     build('build',
-        CXX='xcrun clang++',
+        CXX=cxx,
         CXXFLAGS=cxxflags,
         LINKFLAGS=linkflags,
     )
 
     build('build-tbb',
-        CXX='xcrun clang++',
-        CXXFLAGS=cxxflags + ' -DPARALLEL_TBB',
-        LINKFLAGS=linkflags + ' -ltbb',
+        CXX=cxx,
+        CXXFLAGS=cxxflags,
+        LINKFLAGS=linkflags,
+        CPPDEFINES=['PARALLEL_TBB'],
+        LIBS='tbb',
+    )
+
+elif system == 'Linux':
+    cxx = 'g++-4.7'
+    cxxflags = '-g -std=c++11 -march=native -O3 -Werror -Wall -Wextra -Wunused -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Wdouble-promotion -Wconversion -Wsign-conversion -Wmissing-declarations -Wredundant-decls'
+
+    build('build',
+        CXX=cxx,
+        CXXFLAGS=cxxflags,
+    )
+
+    build('build-tbb',
+        CXX=cxx,
+        CXXFLAGS=cxxflags,
+        CPPDEFINES=['PARALLEL_TBB'],
+        LIBS='tbb',
     )
 
 else:
