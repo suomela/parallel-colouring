@@ -14,7 +14,7 @@ Linux:
 
 OS X:
 
-- XCode
+- Xcode
 - Threading Building Blocks (brew install tbb)
 
 
@@ -65,7 +65,7 @@ colour-cv
   (compare my colour to the colour of my parent)
 
 - Colour reduction 4 -> 3
-  (eliminate colour 4, look parent & parent-of-parent)
+  (eliminate colour 4, look at parent & parent-of-parent)
 
 
 Extending
