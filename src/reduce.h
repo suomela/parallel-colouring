@@ -7,7 +7,7 @@
 
 inline static col_t reduce(unsigned x, unsigned y) {
     unsigned diff {x ^ y};
-    int bit {__builtin_ctz(diff)};
+    unsigned bit {static_cast<unsigned>(__builtin_ctz(diff))};
     unsigned value {(x >> bit) & 1};
     return static_cast<col_t>((bit << 1) | value);
 }
