@@ -11,6 +11,7 @@ public:
         using Sec = std::chrono::duration<double>;
         Sec elapsed {std::chrono::duration_cast<Sec>(Clock::now() - start)};
         std::cout.precision(5);
+        std::cout.width(11);
         std::cout << std::fixed << elapsed.count() << ": " << descr << std::endl;
     }
 

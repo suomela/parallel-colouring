@@ -28,25 +28,29 @@ void Tester::gen_input() {
 }
 
 void Tester::do_colour() {
-    Timer t {"colour"};
+    Timer t {"3-colouring (total)"};
     colour(n, p.get(), c.get());
 }
 
 bool Tester::verify() const {
-    Timer t{"verify"};
     unsigned bad {0};
-    for (unsigned i {0}; i < n; ++i) {
-        if (c[i] >= C) {
-            ++bad;
-        }
-        if (c[i] == c[p[i]]) {
-            ++bad;
+    {
+        Timer t{"verify"};
+        for (unsigned i {0}; i < n; ++i) {
+            if (c[i] >= C) {
+                ++bad;
+            }
+            if (c[i] == c[p[i]]) {
+                ++bad;
+            }
         }
     }
+    std::cout << "\n";
     if (bad > 0) {
-        std::cout << "bad: " << bad << std::endl;
+        std::cout << "invalid output (" << bad << " nodes)" << std::endl;
         return false;
     } else {
+        std::cout << "output OK" << std::endl;
         return true;
     }
 }
@@ -56,9 +60,9 @@ void Tester::stat() const {
     for (unsigned i {0}; i < n; ++i) {
         ++stat[c[i]];
     }
-    std::cout << "histogram:";
+    std::cout << "histogram:\n";
     for (unsigned j {0}; j < C; ++j) {
-        std::cout << " " << stat[j];
+        std::cout << j << ": " << stat[j] << "\n";
     }
-    std::cout << std::endl;
+    std::cout << std::flush;
 }
