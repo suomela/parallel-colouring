@@ -1,7 +1,7 @@
 #ifndef PARALLEL_H
 #define PARALLEL_H
 
-#ifdef PARALLEL_TBB
+#if defined(PARALLEL_TBB)
 
 #include "tbb/tbb.h"
 
@@ -13,6 +13,15 @@
             } \
         } \
     ); \
+} while (false);
+
+#elif defined(PARALLEL_OPENMP)
+
+#define FOREACH(x) do { \
+    _Pragma("omp parallel for") \
+    for (unsigned i = 0; i < n; ++i) { \
+        x; \
+    } \
 } while (false);
 
 #else

@@ -42,5 +42,12 @@ elif system == 'Linux':
         LIBS='tbb',
     )
 
+    build('build-omp',
+        CXX=cxx,
+        CXXFLAGS=cxxflags + ' -fopenmp',
+        LINKFLAGS='-fopenmp',
+        CPPDEFINES=['PARALLEL_OPENMP'],
+    )
+
 else:
     sys.exit('Unsupported system: {}'.format(system))
