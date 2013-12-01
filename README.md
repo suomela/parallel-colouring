@@ -1,6 +1,9 @@
 Parallel Colouring
 ==================
 
+3-colouring directed pseudoforests (each node has 1 parent).
+
+
 Requirements
 ------------
 
@@ -19,6 +22,7 @@ Compilation
 -----------
 
     scons
+
 
 Usage
 -----
@@ -44,3 +48,29 @@ Memory usage: approx. 6 x 2^BITS bytes. For example:
 - BITS = 31: approx. 12 GB
 
 Try BITS = 25 first, it should take a couple of seconds.
+
+
+Implementations
+---------------
+
+colour-naive
+
+- Follow pointers towards parents
+
+- Pick a free colour from {0,1,2} for each node
+
+colour-cv
+
+- Colour reduction n -> 64 -> 12 -> 6 -> 4
+  (compare my colour to the colour of my parent)
+
+- Colour reduction 4 -> 3
+  (eliminate colour 4, look parent & parent-of-parent)
+
+
+Extending
+---------
+
+- Create a new file colour-xxx.cc that implements function "colour".
+
+- Update "SConscript" accordingly.
