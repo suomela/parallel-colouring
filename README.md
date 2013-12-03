@@ -79,6 +79,14 @@ colour-cv-shift
 
 - The last phase is done in two steps
 
+colour-ns
+
+- Colour reduction n -> 64 -> 8 -> 5 -> 4
+  (compare my colour to the colour of my parent)
+
+- Colour reduction 4 -> 3
+  (eliminate colour 4, look at parent & parent-of-parent)
+
 
 Extending
 ---------

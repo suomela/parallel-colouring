@@ -15,20 +15,20 @@ inline static col_t reduce(unsigned x, unsigned y) {
 
 // Naor-Stockmeyer
 
-extern const unsigned SET_4[6];
-extern const unsigned SET_6[12];
-
-inline static col_t reduce12_6(col_t x, col_t y) {
-    unsigned available {SET_6[x] & ~SET_6[y]};
-    unsigned bit {static_cast<unsigned>(__builtin_ctz(available))};
-    return static_cast<col_t>(bit);
+#define GEN_REDUCE(a,b) \
+\
+extern const unsigned SET_##a##_##b[a]; \
+\
+inline static col_t reduce##a##_##b(col_t x, col_t y) { \
+    unsigned available {SET_##a##_##b[x] & ~SET_##a##_##b[y]}; \
+    unsigned bit {static_cast<unsigned>(__builtin_ctz(available))}; \
+    return static_cast<col_t>(bit); \
 }
 
-inline static col_t reduce6_4(col_t x, col_t y) {
-    unsigned available {SET_4[x] & ~SET_4[y]};
-    unsigned bit {static_cast<unsigned>(__builtin_ctz(available))};
-    return static_cast<col_t>(bit);
-}
+GEN_REDUCE(64,8)
+GEN_REDUCE(12,6)
+GEN_REDUCE(8,5)
+GEN_REDUCE(6,4)
 
 // Trivial
 
