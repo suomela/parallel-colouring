@@ -67,6 +67,12 @@ colour-cv
 - Colour reduction 4 -> 3
   (eliminate colour 4, look at parent & parent-of-parent)
 
+colour-cv-shift
+
+- Similar to colour-cv
+
+- The last phase is done in two steps
+
 
 Extending
 ---------

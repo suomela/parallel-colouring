@@ -2,6 +2,7 @@
 #define REDUCE_H
 
 #include "colour.h"
+#include "pack.h"
 
 // Cole-Vishkin
 
@@ -46,6 +47,16 @@ inline col_t reduce4_3(const unsigned *p, const col_t *cold, unsigned i) {
         return pickfree(cold[i], cold[p[parent]]);
     } else {
         return cparent;
+    }
+}
+
+inline col_t reduce4_3_comb(const unsigned *p, const col_t *cold, unsigned i) {
+    auto c = unpack2(cold[i]);
+    if (c.second == 3) {
+        auto c2 = unpack2(cold[p[i]]);
+        return pickfree(c.first, c2.second);
+    } else {
+        return c.second;
     }
 }
 
