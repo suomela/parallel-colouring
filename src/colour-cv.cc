@@ -6,27 +6,27 @@
 
 static void colour64(unsigned n, const unsigned *p, col_t *c) {
     Timer t {"colour n -> 64"};
-    FOREACH(c[i] = reduce(i, p[i]));
+    FOREACH(i, n, c[i] = reduce(i, p[i]));
 }
 
 static void reduce64_12(unsigned n, const unsigned *p, col_t *c, const col_t *cold) {
     Timer t {"colour 64 -> 12"};
-    FOREACH(c[i] = reduce(cold[i], cold[p[i]]));
+    FOREACH(i, n, c[i] = reduce(cold[i], cold[p[i]]));
 }
 
 static void reduce12_6(unsigned n, const unsigned *p, col_t *c, const col_t *cold) {
     Timer t {"colour 12 -> 6"};
-    FOREACH(c[i] = reduce12_6(cold[i], cold[p[i]]));
+    FOREACH(i, n, c[i] = reduce12_6(cold[i], cold[p[i]]));
 }
 
 static void reduce6_4(unsigned n, const unsigned *p, col_t *c, const col_t *cold) {
     Timer t {"colour 6 -> 4"};
-    FOREACH(c[i] = reduce6_4(cold[i], cold[p[i]]));
+    FOREACH(i, n, c[i] = reduce6_4(cold[i], cold[p[i]]));
 }
 
 static void reduce4_3(unsigned n, const unsigned *p, col_t *c, const col_t *cold) {
     Timer t {"colour 4 -> 3"};
-    FOREACH(c[i] = reduce4_3(p, cold, i));
+    FOREACH(i, n, c[i] = reduce4_3(p, cold, i));
 }
 
 void colour(unsigned n, const unsigned *p, col_t *c) {
