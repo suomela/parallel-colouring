@@ -13,17 +13,21 @@ inline static col_t reduce(unsigned x, unsigned y) {
     return static_cast<col_t>((bit << 1) | value);
 }
 
-// http://www.cs.helsinki.fi/u/jrybicki/publications/pdf/gradu.pdf p. 69
+// Naor-Stockmeyer
 
-extern const col_t COL_6_4[6][6];
-extern const col_t COL_12_6[12][12];
+extern const unsigned SET_4[6];
+extern const unsigned SET_6[12];
 
 inline static col_t reduce12_6(col_t x, col_t y) {
-    return COL_12_6[x][y];
+    unsigned available {SET_6[x] & ~SET_6[y]};
+    unsigned bit {static_cast<unsigned>(__builtin_ctz(available))};
+    return static_cast<col_t>(bit);
 }
 
 inline static col_t reduce6_4(col_t x, col_t y) {
-    return COL_6_4[x][y];
+    unsigned available {SET_4[x] & ~SET_4[y]};
+    unsigned bit {static_cast<unsigned>(__builtin_ctz(available))};
+    return static_cast<col_t>(bit);
 }
 
 // Trivial
