@@ -67,6 +67,12 @@ colour-cv
 - Colour reduction 4 -> 3
   (eliminate colour 4, look at parent & parent-of-parent)
 
+colour-cv-compact
+
+- Similar to colour-cv
+
+- More compact storage of temporary data
+
 colour-cv-shift
 
 - Similar to colour-cv

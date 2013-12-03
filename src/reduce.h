@@ -50,13 +50,23 @@ inline col_t reduce4_3(const unsigned *p, const col_t *cold, unsigned i) {
     }
 }
 
-inline col_t reduce4_3_comb(const unsigned *p, const col_t *cold, unsigned i) {
-    auto c = unpack2(cold[i]);
-    if (c.second == 3) {
-        auto c2 = unpack2(cold[p[i]]);
-        return pickfree(c.first, c2.second);
+inline col_t reduce4_3_pack(const unsigned *p, const col_t *cold, unsigned i) {
+    unsigned parent {p[i]};
+    col_t cparent {get4(cold, parent)};
+    if (cparent == 3) {
+        return pickfree(get4(cold, i), get4(cold, p[parent]));
     } else {
-        return c.second;
+        return cparent;
+    }
+}
+
+inline col_t reduce4_3_comb(const unsigned *p, const col_t *ccold, unsigned i) {
+    auto cc = unpack2(ccold[i]);
+    if (cc.second == 3) {
+        auto ccparent = unpack2(ccold[p[i]]);
+        return pickfree(cc.first, ccparent.second);
+    } else {
+        return cc.second;
     }
 }
 
