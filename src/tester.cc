@@ -2,6 +2,7 @@
 #include <random>
 #include "colour.h"
 #include "colour-interface.h"
+#include "hist.h"
 #include "timer.h"
 
 constexpr col_t C {3};
@@ -56,13 +57,5 @@ bool Tester::verify() const {
 }
 
 void Tester::stat() const {
-    std::vector<unsigned> stat(C);
-    for (unsigned i {0}; i < n; ++i) {
-        ++stat[c[i]];
-    }
-    std::cout << "histogram:\n";
-    for (unsigned j {0}; j < C; ++j) {
-        std::cout << j << ": " << stat[j] << "\n";
-    }
-    std::cout << std::flush;
+    histogram(n, c.get(), C);
 }
