@@ -1,0 +1,13 @@
+#!/bin/sh
+
+CXX="g++"
+CXXFLAGS="-g -std=c++11 -march=native -O3 -Werror -Wall -Wextra -Wunused -Wold-style-cast -Woverloaded-virtual -Wsign-promo -Wdouble-promotion -Wconversion -Wsign-conversion -Wmissing-declarations -Wredundant-decls"
+common="src/main.cc src/tester.cc src/reduce.cc src/hist.cc"
+
+mkdir -p build build-omp
+
+for a in naive cv cv-shift cv-compact ns; do
+    echo $a...
+    $CXX $CXXFLAGS src/colour-$a.cc $common -o build/colour-$a || exit 1
+    $CXX -fopenmp -DPARALLEL_OPENMP $CXXFLAGS src/colour-$a.cc $common -o build-omp/colour-$a || exit 1
+done
