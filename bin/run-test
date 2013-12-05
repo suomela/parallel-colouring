@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ "$#" -ne 3 ]; then
+    echo "usage: $0 TAG BUILD BITS" >&2
+    exit 1
+fi
+
+tag="$1"
+build="$2"
+bits="$3"
+
+mkdir -p result/$tag/$build
+for a in naive cv cv-shift cv-compact ns; do
+    $build/colour-$a $bits > result/$tag/$build/colour-$a-$bits
+done
