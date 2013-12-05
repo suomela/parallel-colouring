@@ -9,7 +9,12 @@ tag="$1"
 build="$2"
 bits="$3"
 
+versions="cv cv-shift cv-compact ns"
+if [ "$build" = "build" ]; then
+    versions="naive $versions"
+fi
+
 mkdir -p result/$tag/$build
-for a in naive cv cv-shift cv-compact ns; do
+for a in $versions; do
     $build/colour-$a $bits > result/$tag/$build/colour-$a-$bits
 done
