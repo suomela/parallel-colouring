@@ -1,0 +1,15 @@
+Required setup:
+
+    module load PrgEnv-gnu
+    module load gcc/4.8.1
+
+Compilation:
+
+    bin/build
+
+Test run:
+
+    sbatch bin/batch-omp
+    sbatch bin/batch
+
+
