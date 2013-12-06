@@ -18,13 +18,13 @@ void Tester::gen_input() {
     Timer t{"generate input"};
     assert(n % MAXPAR == 0);
     unsigned part {n/MAXPAR};
+    #pragma omp parallel for
     for (unsigned j {0}; j < MAXPAR; ++j) {
         std::mt19937 rng {j+1};
         static_assert(rng.min() == 0, "rng.min");
         static_assert(rng.max() == std::numeric_limits<unsigned>::max(), "rng.max");
         unsigned start {j * part};
         unsigned end {start + part};
-        #pragma omp parallel for
         for (unsigned i = start; i < end; ++i) {
             unsigned x {static_cast<unsigned>(rng()) & mask};
             if (x == i) {
