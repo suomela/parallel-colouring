@@ -32,12 +32,12 @@ elif system == 'Linux':
 
     build('build',
         CXX=cxx,
-        CXXFLAGS=cxxflags,
+        CXXFLAGS=cxxflags + ' -Wno-unknown-pragmas',
     )
 
     build('build-tbb',
         CXX=cxx,
-        CXXFLAGS=cxxflags,
+        CXXFLAGS=cxxflags + ' -Wno-unknown-pragmas',
         CPPDEFINES=['PARALLEL_TBB'],
         LIBS='tbb',
     )
