@@ -25,7 +25,7 @@ void Tester::gen_input() {
         unsigned start {j * part};
         unsigned end {start + part};
         #pragma omp parallel for
-        for (unsigned i {start}; i < end; ++i) {
+        for (unsigned i = start; i < end; ++i) {
             unsigned x {static_cast<unsigned>(rng()) & mask};
             if (x == i) {
                 x = 0;
@@ -47,7 +47,7 @@ bool Tester::verify() const {
     {
         Timer t{"verify"};
         #pragma omp parallel for reduction(+:bad)
-        for (unsigned i {0}; i < n; ++i) {
+        for (unsigned i = 0; i < n; ++i) {
             if (c[i] >= C) {
                 ++bad;
             }
