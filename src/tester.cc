@@ -24,6 +24,7 @@ void Tester::gen_input() {
         static_assert(rng.max() == std::numeric_limits<unsigned>::max(), "rng.max");
         unsigned start {j * part};
         unsigned end {start + part};
+        #pragma omp parallel for
         for (unsigned i {start}; i < end; ++i) {
             unsigned x {static_cast<unsigned>(rng()) & mask};
             if (x == i) {
@@ -45,6 +46,7 @@ bool Tester::verify() const {
     unsigned bad {0};
     {
         Timer t{"verify"};
+        #pragma omp parallel for reduction(+:bad)
         for (unsigned i {0}; i < n; ++i) {
             if (c[i] >= C) {
                 ++bad;

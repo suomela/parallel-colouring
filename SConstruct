@@ -9,7 +9,7 @@ system = os.uname()[0]
 
 if system == 'Darwin':
     cxx = 'xcrun clang++'
-    cxxflags = '-g -std=c++11 -stdlib=libc++ -march=native -O4 -Weverything -Werror -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-weak-vtables -Wno-unused-function -Wno-sign-conversion'
+    cxxflags = '-g -std=c++11 -stdlib=libc++ -march=native -O4 -Weverything -Werror -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-weak-vtables -Wno-unused-function -Wno-sign-conversion -Wno-unknown-pragmas'
     linkflags = '-stdlib=libc++'
 
     build('build',
