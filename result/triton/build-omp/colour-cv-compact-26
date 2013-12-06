@@ -1,14 +1,14 @@
-    0.41750: generate input
-    0.01886: colour n -> 64
-    0.17452: colour 64 -> 12
-    0.14506: colour 12 -> 6
-    0.14087: colour 6 -> 4
-    0.20087: colour 4 -> 3
-    0.68506: 3-colouring (total)
-    1.54057: verify
+    0.04732: generate input
+    0.01571: colour n -> 64
+    0.17079: colour 64 -> 12
+    0.14105: colour 12 -> 6
+    0.13630: colour 6 -> 4
+    0.18484: colour 4 -> 3
+    0.65191: 3-colouring (total)
+    0.17501: verify
 
 output OK
 histogram:
-0: 25713515
-1: 26328783
-2: 15066566
+0: 25706739
+1: 26335100
+2: 15067025
