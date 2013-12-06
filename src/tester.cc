@@ -19,7 +19,7 @@ void Tester::gen_input() {
     assert(n % MAXPAR == 0);
     unsigned part {n/MAXPAR};
     #pragma omp parallel for
-    for (unsigned j {0}; j < MAXPAR; ++j) {
+    for (unsigned j = 0; j < MAXPAR; ++j) {
         std::mt19937 rng {j+1};
         static_assert(rng.min() == 0, "rng.min");
         static_assert(rng.max() == std::numeric_limits<unsigned>::max(), "rng.max");
