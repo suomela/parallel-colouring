@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for a in $(seq 10 31); do
+    echo $a
+    time bin/run-test ukko build-omp $a || exit 1
+done
+
+for a in $(seq 10 31); do
+    echo $a
+    time bin/run-test ukko build-tbb $a || exit 1
+done
+
+for a in $(seq 10 31); do
+    echo $a
+    time bin/run-test ukko build $a || exit 1
+done
