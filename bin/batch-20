@@ -1,0 +1,10 @@
+#!/bin/bash
+#SBATCH -p short
+#SBATCH --qos=short
+#SBATCH --time=00:30:00
+#SBATCH --mem-per-cpu=24000
+#SBATCH --array=10-31
+#SBATCH --constraint=xeonib
+#SBATCH --output=tmp/slurm-%A_%a.out
+
+srun bin/run-test triton-20 build $SLURM_ARRAY_TASK_ID
