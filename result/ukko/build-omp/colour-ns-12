@@ -1,0 +1,14 @@
+    0.00032: generate input
+    0.00001: colour n -> 64
+    0.00003: colour 64 -> 8
+    0.00003: colour 8 -> 5
+    0.00003: colour 6 -> 4
+    0.00003: colour 4 -> 3
+    0.00017: 3-colouring (total)
+    0.00003: verify
+
+output OK
+histogram:
+0: 1565
+1: 1267
+2: 1264

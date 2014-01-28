@@ -1,0 +1,9 @@
+    1.84171: generate input
+   25.76856: 3-colouring (total)
+    5.93641: verify
+
+output OK
+histogram:
+0: 134213514
+1: 114048286
+2: 20173656
