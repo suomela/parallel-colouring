@@ -1,10 +1,10 @@
-    0.00062: generate input
-    0.00006: colour n -> 64
+    0.00060: generate input
+    0.00004: colour n -> 64
     0.00008: colour 64 -> 8
-    0.00007: colour 8 -> 5
-    0.00007: colour 6 -> 4
+    0.00006: colour 8 -> 5
+    0.00006: colour 6 -> 4
     0.00010: colour 4 -> 3
-    0.00042: 3-colouring (total)
+    0.00039: 3-colouring (total)
     0.00006: verify
 
 output OK

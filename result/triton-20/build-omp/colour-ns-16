@@ -1,4 +1,4 @@
-    0.00045: generate input
+    0.00047: generate input
     0.00003: colour n -> 64
     0.00004: colour 64 -> 8
     0.00003: colour 8 -> 5

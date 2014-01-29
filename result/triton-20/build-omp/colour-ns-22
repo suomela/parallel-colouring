@@ -2,9 +2,9 @@
     0.00049: colour n -> 64
     0.00134: colour 64 -> 8
     0.00123: colour 8 -> 5
-    0.00122: colour 6 -> 4
+    0.00123: colour 6 -> 4
     0.00205: colour 4 -> 3
-    0.00658: 3-colouring (total)
+    0.00662: 3-colouring (total)
     0.00119: verify
 
 output OK
